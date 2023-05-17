@@ -10,7 +10,7 @@
   .catch(error => {
     console.log(error);
   });*/
-function bitcoinTempsReel(){
+function bitcoinTempsReelEUR(){
   fetch('https://blockchain.info/ticker')
   .then(response => response.json())
   .then(data => {
@@ -23,7 +23,24 @@ function bitcoinTempsReel(){
   });
 }
 
-bitcoinTempsReel();
+function bitcoinTempsReelUSD(){
+  fetch('https://blockchain.info/ticker')
+  .then(response => response.json())
+  .then(data => {
+    const usdLast = data.USD.last;
+    console.log(usdLast);
+    document.querySelector('#price_label_usd').textContent = usdLast;
+  })
+  .catch(error => {
+    console.error('Une erreur s\'est produite :', error);
+  });
+}
 
-setInterval(bitcoinTempsReel, 10000);
+bitcoinTempsReelEUR();
+
+setInterval(bitcoinTempsReelEUR, 10000);
   
+
+bitcoinTempsReelUSD();
+
+setInterval(bitcoinTempsReelUSD, 10000);
