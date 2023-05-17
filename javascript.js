@@ -1,7 +1,7 @@
-const axios = require('axios');
+//const axios = require('axios');
 
 
-axios.get('https://blockchain.info/ticker')
+/*axios.get('https://blockchain.info/ticker')
   .then(response => {
     const tickerData = response.data;
     const euroLast = tickerData.EUR.last;
@@ -9,4 +9,21 @@ axios.get('https://blockchain.info/ticker')
   })
   .catch(error => {
     console.log(error);
+  });*/
+function bitcoinTempsReel(){
+  fetch('https://blockchain.info/ticker')
+  .then(response => response.json())
+  .then(data => {
+    const euroLast = data.EUR.last;
+    console.log(euroLast);
+    document.querySelector('#price_label').textContent = euroLast;
+  })
+  .catch(error => {
+    console.error('Une erreur s\'est produite :', error);
   });
+}
+
+bitcoinTempsReel();
+
+setInterval(bitcoinTempsReel, 10000);
+  
