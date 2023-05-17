@@ -16,7 +16,7 @@ function bitcoinTempsReel(){
   .then(data => {
     const euroLast = data.EUR.last;
     console.log(euroLast);
-    document.querySelector('#price_label').textContent = euroLast;
+    document.querySelector('#price_label_eur').textContent = euroLast;
   })
   .catch(error => {
     console.error('Une erreur s\'est produite :', error);
